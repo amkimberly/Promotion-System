@@ -1,0 +1,21 @@
+
+<h2><%= @promotion.name%></h2>
+
+<strong>Descrição: </strong>
+<%= @promotion.description %>
+
+<p><strong>Percentual de Desconto: </strong>
+<%= number_to_percentage @promotion.discount_rate, separator: ',', precision: 2 %></p>
+
+<p><strong>Código Promocional: </strong>
+<%= @promotion.code %></p>
+
+<p><strong>Expira em: </strong></dt>
+<%= @promotion.expiration_date.strftime('%d/%m/%Y') %></p>
+
+<p><strong>Número de cupons: </strong>
+<%= @promotion.coupon_quantity %></p>
+
+<br><br>
+
+<%= link_to "Voltar", promotions_path %>
