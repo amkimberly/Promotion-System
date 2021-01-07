@@ -10,7 +10,11 @@ class PromotionsController < ApplicationController
 
   def create
     @promotion = Promotion.create(promotion_params)
-    redirect_to @promotion
+    if @promotion.save
+      redirect_to @promotion
+    else
+      render :new
+    end
   end
 
   def show
