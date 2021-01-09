@@ -20,3 +20,6 @@
 
 <%= link_to "Voltar", promotions_path %>
 <%= link_to "Editar", edit_promotion_path %>
+<%= link_to "Excluir", promotion_path, 
+                       method: :delete, 
+                       data: {confirm: "Tem certeza que deseja excluir esta promoção?"} %>

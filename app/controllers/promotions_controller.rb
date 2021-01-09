@@ -35,6 +35,11 @@ class PromotionsController < ApplicationController
     end
   end
 
+    def destroy
+      @promotion.destroy
+      flash[:notice] = "Promoção removida com sucesso!"
+      redirect_to promotions_path
+    end
 
   private
 

@@ -62,6 +62,7 @@ end
 
     #ASSERT
     expect(current_path).to eq(promotion_path(Promotion.last))
+    expect(page).to have_content("Promoção atualizada com sucesso!")
     expect(page).to have_content('Cyber Monday')
     expect(page).to have_content('Promoção de Cyber Monday')
     expect(page).to have_content('15,00%')

@@ -17,7 +17,7 @@ describe Promotion do
                                                             ' branco')
     end
 
-    it 'code must be uniq' do
+    it 'code must be unique' do
       Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                         code: 'NATAL10', discount_rate: 10,
                         coupon_quantity: 100, expiration_date: '22/12/2033')
