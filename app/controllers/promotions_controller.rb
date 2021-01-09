@@ -1,5 +1,7 @@
 class PromotionsController < ApplicationController
 
+  before_action :set_promotion, only: %i[show edit update destroy]
+
   def index
     @promotions = Promotion.all
   end
@@ -18,7 +20,19 @@ class PromotionsController < ApplicationController
   end
 
   def show
-    @promotion = Promotion.find(params[:id])
+  end
+
+  def edit
+    render :edit
+  end
+
+  def update
+    if @promotion.update(promotion_params)
+      flash[:notice] = "Promoção atualizada com sucesso!"
+      redirect_to @promotion
+    else
+      render_ :edit
+    end
   end
 
 
@@ -29,5 +43,9 @@ class PromotionsController < ApplicationController
     .require(:promotion)
     .permit(:name, :description, :code, :discount_rate,
             :coupon_quantity, :expiration_date)
+  end
+
+  def set_promotion
+    @promotion = Promotion.find(params[:id])
   end
 end

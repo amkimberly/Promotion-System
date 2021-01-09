@@ -22,7 +22,7 @@ feature 'Admin registers a promotion' do
     fill_in 'Data de término', with: '22/12/2033'
     click_on 'Criar promoção'
 
-    # expect(current_path).to eq(promotion_path(Promotion.last))
+    expect(current_path).to eq(promotion_path(Promotion.last))
     expect(page).to have_content('Cyber Monday')
     expect(page).to have_content('Promoção de Cyber Monday')
     expect(page).to have_content('15,00%')

@@ -4,7 +4,7 @@
 <strong>Descrição: </strong>
 <%= @promotion.description %>
 
-<p><strong>Percentual de Desconto: </strong>
+<p><strong>Desconto: </strong>
 <%= number_to_percentage @promotion.discount_rate, separator: ',', precision: 2 %></p>
 
 <p><strong>Código Promocional: </strong>
@@ -19,3 +19,4 @@
 <br><br>
 
 <%= link_to "Voltar", promotions_path %>
+<%= link_to "Editar", edit_promotion_path %>

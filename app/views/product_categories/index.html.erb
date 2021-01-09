@@ -1,0 +1,10 @@
+<% @product_categories.each do |product_category| %>
+  <h3><%= link_to product_category.name, product_category %></h3>
+<% end %>
+
+<% if @product_categories.empty? %>
+  <p>Nenhuma categoria cadastrada</p>
+<% end %>
+
+<%= link_to "Registrar nova categoria", new_product_category_path %>
+<%= link_to "Voltar", root_path %>
