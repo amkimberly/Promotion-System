@@ -1,3 +1,8 @@
 <h3><%= @product_category.name %></h2>
 <p> Código da Categoria:
 <h5><%= @product_category.code%></h5></p>
+
+<%= link_to "Voltar", product_categories_path %>
+<%= link_to "Excluir categoria", product_category_path,
+                                  method: :delete,
+                                  data: {confirm: "Tem certeza que deseja excluir esta categoria?"}%>

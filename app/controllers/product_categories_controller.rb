@@ -1,11 +1,10 @@
 class ProductCategoriesController < ApplicationController
-
+  before_action :set_category, only:  %i[show destroy ]
   def index
     @product_categories = ProductCategory.all
   end
 
   def show
-    @product_category = ProductCategory.find(params[:id])
   end
 
   def new
@@ -21,6 +20,12 @@ class ProductCategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @product_category.destroy
+    flash[:notice] = "Categoria removida com sucesso!"
+    redirect_to product_categories_path
+  end
+
 
   private
 
@@ -28,6 +33,10 @@ class ProductCategoriesController < ApplicationController
     params
     .require(:product_category)
     .permit(:name, :code)
+  end
+
+  def set_category
+    @product_category = ProductCategory.find(params[:id])
   end
 
 end

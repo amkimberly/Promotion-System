@@ -1,17 +1,3 @@
-<% if @product_category.errors.any? %>
-  <% @product_category.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
-<% end %>
-
-
-<%= form_with model: @product_category do |f| %>
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name %>
-
-  <%= f.label :code, 'Código' %>
-  <%= f.text_field :code %>
-
-  <%= f.submit 'Criar categoria' %>
-<% end %>
-
+<%= render partial: 'form', locals: {action_text: "Criar categoria"} %>
+<%= link_to "Voltar", product_categories_path %>
+ 

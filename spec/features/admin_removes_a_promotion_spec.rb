@@ -18,7 +18,7 @@ feature 'Admin removes a promotion' do
     expect(page).to have_link('Excluir', href: promotion_path(Promotion.last))
   end
 
-  scenario "and drops promotion then goes to promotions' page" do
+  scenario "and goes to promotions' page" do
     #ACTION
     click_on 'Excluir'
     #ASSERT
