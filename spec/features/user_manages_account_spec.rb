@@ -26,8 +26,14 @@ feature 'User' do
   end
 
   context 'Log out' do
+    let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
+
     scenario 'and goes to home page' do
 
+      click_on 'Login'
+      fill_in 'Email', with: 'piupiu@locaweb.com.br'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
       click_on 'Sair'
 
       expect(current_path).to eq(root_path)
@@ -39,10 +45,6 @@ feature 'User' do
   end
 
   context 'Create new account' do
-    scenario 'from home page' do
-      expect(page).to have_link('Registrar conta', href: new_user_registration_path)
-    end
-
     scenario 'successfully' do
       visit new_user_registration_path
 
