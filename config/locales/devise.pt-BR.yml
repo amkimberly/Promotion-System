@@ -46,8 +46,8 @@ pt-BR:
       updated_but_not_signed_in: "Sua conta foi atualizada com sucesso. Como sua senha mudou, você precisa refazer o login."
     sessions:
       signed_in: "Login efetuado com sucesso!"
-      signed_out: "Saiu com sucesso."
-      already_signed_out: "Saiu com sucesso."
+      signed_out: "Logout efetuado com sucesso!"
+      already_signed_out: "Logout efetuado com sucesso!"
     unlocks:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."
