@@ -1,5 +1,5 @@
 class ProductCategoriesController < ApplicationController
-  before_action :set_category, only:  %i[show destroy ]
+  before_action :set_category, only:  %i[show destroy edit update ]
   def index
     @product_categories = ProductCategory.all
   end
@@ -17,6 +17,19 @@ class ProductCategoriesController < ApplicationController
       redirect_to product_categories_path
     else
       render :new
+    end
+  end
+
+  def edit
+    render :edit
+  end
+
+  def update
+    if @product_category.update(product_category_params)
+      flash[:notice] = "Categoria atualizada com sucesso!"
+      redirect_to @product_category
+    else
+      render :edit
     end
   end
 

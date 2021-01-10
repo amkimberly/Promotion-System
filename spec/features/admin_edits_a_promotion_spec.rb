@@ -39,7 +39,7 @@ feature 'Admin edits a promotion' do
     expect(page).to have_field('Quantidade de cupons', with: '100')
     expect(page).to have_field('Data de término', with: '2033-12-22')
 end
-  scenario "and update promotion's informations" do
+  scenario "and updates promotion's informations" do
 
     #ARRANGE
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
