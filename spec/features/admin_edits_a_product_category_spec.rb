@@ -2,8 +2,10 @@ require 'rails_helper'
 
 feature 'Admin edits a product category' do
   let!(:product_category) {ProductCategory.create!(name:'Passagens Aéreas', code: 'PAX') }
+  let! (:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
 
   before (:each) do
+    login_as user, scope: :user
     visit product_categories_path
     click_on "Passagens Aéreas"
   end

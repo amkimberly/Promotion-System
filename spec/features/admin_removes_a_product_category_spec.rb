@@ -3,9 +3,11 @@ require 'rails_helper'
 feature 'Admin removes a product category' do
   #ARRANGE
   let!(:product_category) {ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')}
+  let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
 
   #ACTION
   before(:each) do
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de produto'
     click_on 'Passagens Aéreas'

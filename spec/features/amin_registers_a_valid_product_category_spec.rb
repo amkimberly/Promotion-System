@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 feature 'Admin registers a valid product category' do 
+  let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
+
+  before(:each) do
+    login_as user, scope: :user
+  end
+  
   scenario 'and attributes cannot be blank' do
     ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')
 

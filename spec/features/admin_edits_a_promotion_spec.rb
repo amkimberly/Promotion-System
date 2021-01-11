@@ -7,8 +7,10 @@ feature 'Admin edits a promotion' do
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                       code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
                       expiration_date: '22/12/2033')
+    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
     #ACT
+    login_as user, scope: :user
     visit promotions_path
     click_on "Natal"
    
@@ -23,9 +25,12 @@ feature 'Admin edits a promotion' do
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                       code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
                       expiration_date: '22/12/2033')
+    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+
 
 
     #ACT
+    login_as user, scope: :user
     visit promotions_path
     click_on "Natal"
     click_on "Editar"
@@ -45,8 +50,11 @@ end
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                       code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
                       expiration_date: '22/12/2033')
+    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+
 
     #ACT
+    login_as user, scope: :user
     visit promotions_path
     click_on "Natal"
     click_on "Editar"

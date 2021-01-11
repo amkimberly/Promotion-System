@@ -1,4 +1,5 @@
 class ProductCategoriesController < ApplicationController
+  before_action :authenticate_user!, only: %i[index]
   before_action :set_category, only:  %i[show destroy edit update ]
   def index
     @product_categories = ProductCategory.all
