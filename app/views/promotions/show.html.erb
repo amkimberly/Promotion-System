@@ -23,3 +23,17 @@
 <%= link_to "Excluir", promotion_path, 
                        method: :delete, 
                        data: {confirm: "Tem certeza que deseja excluir esta promoção?"} %>
+
+<% if @promotion.coupons.empty? %>
+  <p>Nenhum cupom foi gerado.</p>
+  <%= link_to 'Emitir cupons', generate_coupons_promotion_path(@promotion), method: :post %>
+<% else %>
+  <h1>Cupons</h1>
+
+  <% @promotion.coupons.each do |coupon| %>
+    <dl>
+      <dt>Código</dt>
+      <dd><%= coupon.code %></dd>
+    </dl>
+  <% end %>
+<% end %>

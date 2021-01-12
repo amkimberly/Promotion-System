@@ -1,0 +1,7 @@
+---
+pt-BR:
+  activerecord:
+    attributes:
+      product_category:
+        name: 'Nome'
+        code: 'Código'
