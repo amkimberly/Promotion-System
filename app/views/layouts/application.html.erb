@@ -16,7 +16,6 @@
   <p class="alert"><%= alert %></p>
 
     <%= yield %>
-    
     <% if user_signed_in? %>
     <p><%= current_user.email %></p>
     <%= link_to "Sair", destroy_user_session_path, method: :delete %>

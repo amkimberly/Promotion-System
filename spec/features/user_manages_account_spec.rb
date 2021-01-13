@@ -57,7 +57,7 @@ feature 'User' do
       expect(page).to have_content("Conta criada com sucesso!")
     end
 
-    scenario 'and fail' do
+    scenario 'and shows blank error' do
       visit new_user_registration_path
 
       fill_in 'Senha', with: '123456'
@@ -66,6 +66,19 @@ feature 'User' do
 
       expect(current_path).to eq(user_registration_path)
       expect(page).to have_content("não pode ficar em branco")
+    end
+
+    scenario "and shows email adress error" do
+
+      visit new_user_registration_path
+
+      fill_in 'Email', with: 'piupiu@locaweb.com'
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirmação senha', with: '123456'
+      click_on 'Registrar'
+
+      expect(current_path).to eq(user_registration_path)
+      expect(page).to have_content("precisa ser '@locaweb.com.br'")
     end
   end
 end
