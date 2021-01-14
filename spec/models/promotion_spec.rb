@@ -28,4 +28,34 @@ describe Promotion do
       expect(promotion.errors[:code]).to include('deve ser único')
     end
   end
+  context '#generate_coupons!' do
+    it 'of a promotion with no coupons' do
+    promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
+                                  code: 'PASCOA21', discount_rate: 10, 
+                                  expiration_date: 1.day.from_now)
+    promotion.generate_coupons!
+
+    expect(promotion.coupons.count).to eq(5)
+    expect(promotion.coupons.map(&:code)).to contain_exactly('PASCOA21-0001',
+                                                     'PASCOA21-0002',
+                                                     'PASCOA21-0003',
+                                                     'PASCOA21-0004',
+                                                     'PASCOA21-0005')
+    end
+    it 'and coupons are already generated' do
+      promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
+                                    code: 'PASCOA21', discount_rate: 10, 
+                                    expiration_date: 1.day.from_now)
+
+      promotion.generate_coupons!
+
+      expect {promotion.generate_coupons!}.to raise_error('Cupons já foram gerados')
+      expect(promotion.coupons.count).to eq(5)
+      expect(promotion.coupons.map(&:code)).to contain_exactly('PASCOA21-0001',
+                                                       'PASCOA21-0002',
+                                                       'PASCOA21-0003',
+                                                       'PASCOA21-0004',
+                                                       'PASCOA21-0005')
+    end
+  end
 end

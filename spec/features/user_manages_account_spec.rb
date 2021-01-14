@@ -44,7 +44,7 @@ feature 'User' do
     end
   end
 
-  context 'Create new account' do
+  context 'Creates new account' do
     scenario 'successfully' do
       visit new_user_registration_path
 
@@ -80,6 +80,31 @@ feature 'User' do
       expect(current_path).to eq(user_registration_path)
       expect(page).to have_content("precisa ser '@locaweb.com.br'")
     end
+  end
+
+  context 'Deletes account' do
+    let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
+
+    scenario 'through profile page' do
+
+      login_as user, scope: :user
+      visit root_path
+
+      expect(page).to have_link('Minha conta')
+    end
+
+    scenario 'successfully' do
+
+      login_as user, scope: :user
+      visit root_path
+      click_on "Minha conta"
+      click_on "Excluir minha conta"
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("Sua conta foi excluída com sucesso. Esperamos vê-lo novamente em breve.")
+      expect(page).to_not have_link("Excluir minha conta")
+    end
+
   end
 end
 

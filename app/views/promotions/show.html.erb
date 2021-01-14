@@ -35,5 +35,7 @@
       <dt>Código</dt>
       <dd><%= coupon.code %></dd>
     </dl>
+    <%= link_to "Desabilitar cupom", disable_coupon_path(coupon), method: :post,
+                                     data: {confirm: "Tem certeza que deseja desativar cupom?"}%>
   <% end %>
 <% end %>

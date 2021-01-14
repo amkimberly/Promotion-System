@@ -14,12 +14,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  def destroy
-    super
-    if !user_signed_in?
-      flash[:notice] = "Logout efetuado com sucesso!"
-    end
-  end
+ # def destroy
+  #  super
+  #end
 
   # protected
 
