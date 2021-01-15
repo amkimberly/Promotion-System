@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :product_categories
   resources :coupons, only: [] do
-    post 'disable', on: :member
+    post 'inactivate', on: :member
   end
 end
 

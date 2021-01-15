@@ -29,13 +29,5 @@
   <%= link_to 'Emitir cupons', generate_coupons_promotion_path(@promotion), method: :post %>
 <% else %>
   <h1>Cupons</h1>
-
-  <% @promotion.coupons.each do |coupon| %>
-    <dl>
-      <dt>Código</dt>
-      <dd><%= coupon.code %></dd>
-    </dl>
-    <%= link_to "Desabilitar cupom", disable_coupon_path(coupon), method: :post,
-                                     data: {confirm: "Tem certeza que deseja desativar cupom?"}%>
-  <% end %>
+  <%= render @promotion.coupons %>
 <% end %>

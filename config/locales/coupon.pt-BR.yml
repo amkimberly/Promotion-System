@@ -1,0 +1,19 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      coupon:
+        one: "Cupom"
+        other: "Cupons"
+    attributes:
+      coupon:
+        code: "Código"
+      coupon/status:
+        active: "Disponível"
+        inactive: "Desabilitado" 
+  coupon:
+    flash:
+      inactivate: "Cupom desabilitado com sucesso!"
+  coupons:
+      coupon:
+        inactivate: "Desabilitar cupom"
