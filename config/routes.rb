@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations',
                                    sessions: 'users/sessions'}
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'home#index'
   resources :promotions do
     post 'generate_coupons', on: :member
@@ -9,6 +8,12 @@ Rails.application.routes.draw do
   resources :product_categories
   resources :coupons, only: [] do
     post 'inactivate', on: :member
+  end
+
+  namespace :api do
+    namespace :v1 do
+      get 'coupons/:code', to: 'coupons#show'
+    end
   end
 end
 
