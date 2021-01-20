@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin inactivate coupon' do
+feature 'Admin cancels coupon' do
   scenario 'successfully' do
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
     promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
@@ -15,7 +15,7 @@ feature 'Admin inactivate coupon' do
       expect(page).to have_content("Cupom desabilitado com sucesso!")
       expect(page).to have_content("NATAL10-0001 (Desabilitado)")
       expect(page).to_not have_link("Desabilitar cupom")
-      expect(coupon.reload).to be_inactive
+      expect(coupon.reload).to be_cancel
 
   end
 end

@@ -1,9 +1,9 @@
 class CouponsController < ApplicationController
 
-    def inactivate
+    def cancel
       @coupon = Coupon.find(params[:id])
-      @coupon.inactive!
-      flash[:notice] = t('coupon.flash.inactivate')
+      @coupon.cancel!
+      flash[:notice] = t('coupon.flash.cancel')
       redirect_to @coupon.promotion
     end
 end

@@ -1,15 +1,21 @@
 class Coupon < ApplicationRecord
   belongs_to :promotion
 
-  enum status: {active: 0, inactive: 10}
+  enum status: {active: 0, cancel: 10, inactive:20}
   
   def title
   "#{code} (#{Coupon.human_attribute_name("status.#{status}")})"
   end
 
   def as_json(options = {})
-    super(options.merge(methods: %i[discount_rate expiration_date],
-                        only: %i[]))
+    super({methods: %i[discount_rate expiration_date],
+          only: %i[]}.merge(options))
+  end
+
+  def inactivate!(order)
+    self.order = order
+    self.status = :inactive
+    save!(context: :coupon_inactivate)
   end
 
   private

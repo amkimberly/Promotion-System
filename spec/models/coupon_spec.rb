@@ -9,7 +9,7 @@ describe Coupon do
     end
 
     it 'status inactive' do
-      coupon = Coupon.new(code: 'NATAL10-0001', status: :inactive)
+      coupon = Coupon.new(code: 'NATAL10-0001', status: :cancel)
       expect(coupon.title).to eq('NATAL10-0001 (Desabilitado)')
     end
   end

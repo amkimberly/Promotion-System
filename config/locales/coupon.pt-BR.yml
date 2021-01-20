@@ -10,10 +10,11 @@ pt-BR:
         code: "Código"
       coupon/status:
         active: "Disponível"
-        inactive: "Desabilitado" 
+        cancel: "Desabilitado" 
+        inactive: "Utilizado"
   coupon:
     flash:
-      inactivate: "Cupom desabilitado com sucesso!"
+      cancel: "Cupom desabilitado com sucesso!"
   coupons:
       coupon:
-        inactivate: "Desabilitar cupom"
+        cancel: "Desabilitar cupom"

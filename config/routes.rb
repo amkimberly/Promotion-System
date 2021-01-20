@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   end
   resources :product_categories
   resources :coupons, only: [] do
-    post 'inactivate', on: :member
+    post 'cancel', on: :member
   end
 
   namespace :api do
     namespace :v1 do
-      get 'coupons/:code', to: 'coupons#show'
+      resources :coupons, param: :code, only: %i[show] do
+        post 'inactivate', on: :member
+      end
     end
   end
 end

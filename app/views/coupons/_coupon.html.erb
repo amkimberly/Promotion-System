@@ -3,6 +3,6 @@
   <dd><%= coupon.title %></dd>
 </dl>
 <% if coupon.active? %>
-  <%= link_to t('.inactivate'), inactivate_coupon_path(coupon), method: :post,
+  <%= link_to t('.cancel'), cancel_coupon_path(coupon), method: :post,
                                       data: {confirm: "Tem certeza que deseja desativar cupom?"}%>
 <% end %>
