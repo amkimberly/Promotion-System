@@ -1,8 +1,11 @@
-<dl>
+<% if coupon %>
   <dt>Código</dt>
   <dd><%= coupon.title %></dd>
-</dl>
-<% if coupon.active? %>
-  <%= link_to t('.cancel'), cancel_coupon_path(coupon), method: :post,
-                                      data: {confirm: "Tem certeza que deseja desativar cupom?"}%>
+  <% if coupon.active? %>
+    <%= link_to t('.cancel'), cancel_coupon_path(coupon), method: :post,
+                                        data: {confirm: "Tem certeza que deseja desativar cupom?"}%>
+    <% end %>
+<% else %>
+  <p>Cupom não encontrado</p>
 <% end %>
+

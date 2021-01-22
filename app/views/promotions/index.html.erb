@@ -1,3 +1,17 @@
+<%= form_with url: "/coupons/search", method: :get do |form| %>
+  <div  class= "ls-form ls-form-inline ls-float-left">
+    <%= form.label :code, "Buscar" %>
+    <%= form.text_field :code %>
+    <%= form.submit "Buscar cupom", class:"ls-btn-primary ls-btn" %>
+  </div>
+<% end %>
+
+<%= form_tag search_promotions_path, 
+             method: :get do %>
+  <%= text_field_tag :query, @query, class: "form-control" %>
+  <%= button_to "Pesquisar", class: "btn btn-primary" %>
+<% end %>
+
 <br><br>
 <table>
   <tr>

@@ -1,0 +1,5 @@
+<h2>Resultados encontrados...</h2>
+<% @promotions.each do |promotion| %>
+  <td><%= link_to promotion.name, promotion %></td>
+  <td><%= promotion.description %></td>
+<% end %>
