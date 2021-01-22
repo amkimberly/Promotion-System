@@ -10,6 +10,10 @@ class PromotionsController < ApplicationController
     @promotion = Promotion.new
   end
 
+  def search
+    @promotion = Promotion.find_by(name: params[:name])
+  end
+
   def create
     @promotion = Promotion.create(promotion_params)
     if @promotion.save

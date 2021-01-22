@@ -1,5 +1,9 @@
-<h2>Resultados encontrados...</h2>
-<% @promotions.each do |promotion| %>
-  <td><%= link_to promotion.name, promotion %></td>
-  <td><%= promotion.description %></td>
+<% if @promotion %>
+    <h2>Resultados encontrados...</h2>
+    <td><%= link_to @promotion.name, @promotion %></td>
+    <td><%= @promotion.description %></td>
+<% else %>
+    <p>Promoção não encontrada</p>
 <% end %>
+
+<%= link_to "Voltar", promotions_path, class: "btn btn-primary"%>
