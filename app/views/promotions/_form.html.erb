@@ -38,6 +38,11 @@
     <br><br>
   </div>
 
+  <div class="form-group">
+  <%= f.label :product_category_ids %>
+  <%= f.collection_check_boxes :product_category_ids, ProductCategory.all, :id, :name %>
+  </div>
+
   <%= f.submit action_text, class: "btn btn-success" %>
   </div>
 

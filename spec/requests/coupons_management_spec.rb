@@ -43,8 +43,10 @@ describe 'coupon management' do
     end
 
     xit 'coupon not found by code' do
+      
     end
-    xit 'order must exist' do
+
+    it 'order must exist' do
       promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                                     code: 'NATAL10', discount_rate: 10, 
                                     coupon_quantity: 100,

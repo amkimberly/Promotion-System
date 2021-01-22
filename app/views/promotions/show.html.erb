@@ -5,6 +5,10 @@
 <p><strong>Desconto: </strong>
 <%= number_to_percentage @promotion.discount_rate, separator: ',', precision: 2 %></p>
 
+<% @promotion.product_categories.each do |product_category| %>
+  <p><%= product_category.name %></p>
+<% end %>
+
 <p><strong>Código Promocional: </strong>
 <%= @promotion.code %></p>
 

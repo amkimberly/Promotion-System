@@ -34,5 +34,8 @@ module PromotionSystem
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Enable rails to serve my assets
+    config.serve_static_assets = true
   end
 end

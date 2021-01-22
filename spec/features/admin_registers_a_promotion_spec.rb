@@ -16,6 +16,10 @@ feature 'Admin registers a promotion' do
   end
 
   scenario 'successfully' do
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
+    ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')
+    ProductCategory.create!(name: 'Restaurante', code: 'EAT20')
+
     visit root_path
     click_on 'Promoções'
     click_on 'Registrar uma promoção'
@@ -26,6 +30,8 @@ feature 'Admin registers a promotion' do
     fill_in 'Desconto', with: '15'
     fill_in 'Quantidade de cupons', with: '90'
     fill_in 'Data de término', with: '22/12/2033'
+    check 'Hospedagem'
+    check 'Passagens Aéreas'
     click_on 'Criar promoção'
 
     expect(current_path).to eq(promotion_path(Promotion.last))
@@ -35,6 +41,9 @@ feature 'Admin registers a promotion' do
     expect(page).to have_content('CYBER15')
     expect(page).to have_content('22/12/2033')
     expect(page).to have_content('90')
+    expect(page).to have_content('Hospedagem')
+    expect(page).to have_content('Passagens Aéreas')
+    expect(page).to_not have_content('Restaurante')
     expect(page).to have_link('Voltar')
   end
 end

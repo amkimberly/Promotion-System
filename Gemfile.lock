@@ -251,6 +251,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.1)
   sass-rails (>= 6)
   spring
+  sprockets-rails
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   twitter-bootstrap-rails
