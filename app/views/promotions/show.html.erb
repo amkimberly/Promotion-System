@@ -19,17 +19,18 @@
 <%= @promotion.coupon_quantity %></p>
 
 <br><br>
-
-<%= link_to "Voltar", promotions_path %>
-<%= link_to "Editar", edit_promotion_path %>
-<%= link_to "Excluir", promotion_path, 
-                       method: :delete, 
-                       data: {confirm: "Tem certeza que deseja excluir esta promoção?"} %>
-
 <% if @promotion.coupons.empty? %>
   <p>Nenhum cupom foi gerado.</p>
-  <%= link_to 'Emitir cupons', generate_coupons_promotion_path(@promotion), method: :post %>
+  <%= link_to t('promotion.link.generate_coupons'), 
+      generate_coupons_promotion_path(@promotion), method: :post %>
 <% else %>
   <h1>Cupons</h1>
   <%= render @promotion.coupons %>
 <% end %>
+
+<br><br>
+<%= link_to t('promotion.link.back'), promotions_path %>
+<%= link_to t('promotion.link.update'), edit_promotion_path %>
+<%= link_to t('promotion.link.delete'), promotion_path, 
+                                        method: :delete, 
+                                        data: {confirm: t('promotion.confirm.delete')} %>

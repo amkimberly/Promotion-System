@@ -5,3 +5,15 @@ pt-BR:
       product_category:
         name: "Nome"
         code: "Código"
+  product_categories:
+    flash:
+      create: 'Categoria criada com sucesso!'
+      delete: 'Categoria removida com sucesso!'
+      update: 'Categoria atualizada com sucesso!'
+    link:
+      register: 'Registrar nova categoria'
+      back: 'Voltar'
+      update: 'Editar'
+      delete: 'Excluir categoria'
+    confirm:
+      delete: 'Tem certeza que deseja excluir esta categoria?'

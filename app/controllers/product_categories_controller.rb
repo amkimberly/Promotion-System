@@ -16,6 +16,7 @@ class ProductCategoriesController < ApplicationController
     @product_category = ProductCategory.create(product_category_params)
     if @product_category.save
       redirect_to product_categories_path
+      flash[:notice] = t('product_categories.flash.create')
     else
       render :new
     end
@@ -27,7 +28,7 @@ class ProductCategoriesController < ApplicationController
 
   def update
     if @product_category.update(product_category_params)
-      flash[:notice] = "Categoria atualizada com sucesso!"
+      flash[:notice] = t('product_categories.flash.update')
       redirect_to @product_category
     else
       render :edit
@@ -36,7 +37,7 @@ class ProductCategoriesController < ApplicationController
 
   def destroy
     @product_category.destroy
-    flash[:notice] = "Categoria removida com sucesso!"
+    flash[:notice] = t('product_categories.flash.delete')
     redirect_to product_categories_path
   end
 

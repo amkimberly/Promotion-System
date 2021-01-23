@@ -2,8 +2,8 @@
 <p> Código da Categoria:
 <h5><%= @product_category.code%></h5></p>
 
-<%= link_to "Voltar", product_categories_path %>
-<%= link_to "Editar", edit_product_category_path%>
-<%= link_to "Excluir categoria", product_category_path,
+<%= link_to t('product_categories.link.back'), product_categories_path %>
+<%= link_to t('product_categories.link.update'), edit_product_category_path%>
+<%= link_to t('product_categories.link.delete'), product_category_path,
                                   method: :delete,
-                                  data: {confirm: "Tem certeza que deseja excluir esta categoria?"}%>
+                                  data: {confirm: t('product_categories.confirm.delete')}%>

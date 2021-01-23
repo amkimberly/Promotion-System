@@ -16,5 +16,12 @@ pt-BR:
     flash:
       cancel: "Cupom desabilitado com sucesso!"
   coupons:
-      coupon:
+      link:
         cancel: "Desabilitar cupom"
+        back: 'Voltar'
+      confirm:
+        inactivate : 'Tem certeza que deseja desativar este cupom?'
+      message:
+        not_found: 'Cupom não encontrado'
+        used: 'Cupom utilizado com sucesso'
+

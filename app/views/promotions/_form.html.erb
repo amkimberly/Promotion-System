@@ -1,12 +1,13 @@
 <% if @promotion.errors.any? %>
   <ul>
     <% @promotion.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <div class="alert alert-danger" role="alert"> 
+      <li><%= message%></li>
   </ul>
     <% end %>
 <% end %>
 
-<%= form_with model: @promotion do |f| %>
+<%= form_with model: @promotion, local: true do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name%>
@@ -39,8 +40,8 @@
   </div>
 
   <div class="form-group">
-  <%= f.label :product_category_ids %>
-  <%= f.collection_check_boxes :product_category_ids, ProductCategory.all, :id, :name %>
+  <%= f.label :product_category_ids %><br>
+  <p><%= f.collection_check_boxes :product_category_ids, ProductCategory.all, :id, :name %></p>
   </div>
 
   <%= f.submit action_text, class: "btn btn-success" %>

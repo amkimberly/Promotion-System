@@ -10,13 +10,13 @@ module Api
         render json: @coupon, status: :ok
 
       rescue ActiveRecord::RecordNotFound
-        render json: 'Cupom não encontrado', status: :not_found
+        render json: I18n.t('coupons.message.not_found'), status: :not_found
       end
 
       def inactivate
         @coupon = Coupon.find_by!(code: params[:code])
         @coupon.inactivate!(params[:order][:code])
-        render json: 'Cupom utilizado com sucesso', status: :ok
+        render json: I18n.t('coupons.message.used') , status: :ok
 
       rescue ActiveRecord::RecordInvalid
         render json: '', status: 422

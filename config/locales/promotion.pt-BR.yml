@@ -10,6 +10,21 @@ pt-BR:
         name: 'Nome'
         description: 'Descrição'
         code: 'Código'
+        product_category_ids: 'Categoria de produtos'
         discount_rate: 'Desconto'
         coupon_quantity: 'Quantidade de cupons'
         expiration_date: 'Data de término'
+  promotion:
+    flash:
+      delete: 'Promoção removida com sucesso!'
+      create: 'Promoção registrada com sucesso!'
+      update: 'Promoção atualizada com sucesso!'
+      generate_coupons: 'Cupons gerados com sucesso!'
+    confirm:
+      delete: 'Tem certeza que deseja excluir esta promoção?'
+    link:
+      register: 'Registrar uma promoção'
+      back: 'Voltar'
+      update: 'Editar'
+      delete: 'Excluir'
+      generate_coupons: 'Emitir cupons'

@@ -17,6 +17,7 @@ class PromotionsController < ApplicationController
   def create
     @promotion = Promotion.create(promotion_params)
     if @promotion.save
+      flash[:notice] = t('promotion.flash.create')
       redirect_to @promotion
     else
       render :new
@@ -26,7 +27,7 @@ class PromotionsController < ApplicationController
   def generate_coupons
     @promotion.generate_coupons!
     redirect_to @promotion
-    flash[:notice] = "Cupons gerados com sucesso!"
+    flash[:notice] = t('promotion.flash.generate_coupons')
   end
 
   def show
@@ -38,7 +39,7 @@ class PromotionsController < ApplicationController
 
   def update
     if @promotion.update(promotion_params)
-      flash[:notice] = "Promoção atualizada com sucesso!"
+      flash[:notice] = t('promotion.flash.update')
       redirect_to @promotion
     else
       render_ :edit
@@ -47,7 +48,7 @@ class PromotionsController < ApplicationController
 
     def destroy
       @promotion.destroy
-      flash[:notice] = "Promoção removida com sucesso!"
+      flash[:notice] = t('promotion.flash.delete')
       redirect_to promotions_path
     end
 
