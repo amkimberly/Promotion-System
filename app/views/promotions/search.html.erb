@@ -1,9 +1,21 @@
-<% if @promotion %>
-    <h2>Resultados encontrados...</h2>
-    <td><%= link_to @promotion.name, @promotion %></td>
-    <td><%= @promotion.description %></td>
+<% if @promotions.present? %>
+    <% @promotions.each do |promotion| %>
+        <h3><%= "Resultados encontrados para '#{promotion.name}'" %></h3>
+        <br><br>
+        <td><%= link_to promotion.name, promotion %></td>
+        <td><%= promotion.description %></td>
+    <% end %>
 <% else %>
-    <p>Promoção não encontrada</p>
+    <h3>Nenhuma promoção encontrada</h3>
 <% end %>
 
+<% if @coupons %>
+    <% @coupons.each do |coupon| %>
+        <h3><%= "Resultados encontrados" %></h3>
+        <%= link_to coupon.title, coupon.promotion %>
+    <% end %>
+<% else %> 
+        <h3> Não foram encontrados resultados deste cupom </h3>
+<% end %>
+<br><br>
 <%= link_to t('promotion.link.back'), promotions_path, class: "btn btn-primary"%>

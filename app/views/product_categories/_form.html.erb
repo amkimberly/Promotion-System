@@ -1,5 +1,6 @@
 <% if @product_category.errors.any? %>
   <% @product_category.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger" role="alert">
     <p><%= message %></p>
   <% end %>
 <% end %>

@@ -11,7 +11,9 @@ class PromotionsController < ApplicationController
   end
 
   def search
-    @promotion = Promotion.find_by(name: params[:name])
+    @query = params[:query]
+    @promotions = Promotion.where("name LIKE ?", "%#{@query}%")
+    @coupons = Coupon.where("code LIKE ?", "%#{@query}%")
   end
 
   def create

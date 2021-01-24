@@ -7,7 +7,7 @@ feature 'Admin searches a promotion' do
     login_as user, scope: :user
     visit promotions_path
 
-    expect(page).to have_button("Pesquisar")
+    expect(page).to have_button("Buscar")
   end
   scenario 'successfully' do
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
@@ -17,8 +17,8 @@ feature 'Admin searches a promotion' do
 
     login_as user, scope: :user
     visit promotions_path
-    fill_in 'Buscar promoção', with: 'Natal'
-    click_on 'Pesquisar'
+    fill_in :query, with: 'Natal'
+    click_on 'Buscar'
 
     expect(page).to have_content(promotion.name)
   end
@@ -27,9 +27,9 @@ feature 'Admin searches a promotion' do
 
     login_as user, scope: :user
     visit promotions_path
-    fill_in 'Buscar promoção', with: 'Natal'
-    click_on 'Pesquisar'
+    fill_in :query, with: 'Natal'
+    click_on 'Buscar'
 
-    expect(page).to have_content('Promoção não encontrada')
+    expect(page).to have_content('Nenhuma promoção encontrada')
   end
 end

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 feature 'Admin searches a coupon' do
-  scenario 'and click on search' do
+  scenario 'from index page' do
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
     login_as user, scope: :user
-    visit promotions_path
+    visit root_path
 
-    expect(page).to have_button("Buscar cupom")
+    expect(page).to have_button("Buscar")
   end
 
   scenario 'successfully' do
@@ -18,9 +18,9 @@ feature 'Admin searches a coupon' do
     coupon = Coupon.create!(promotion: promotion, code: 'NATAL10-0001')
 
     login_as user, scope: :user
-    visit promotions_path
-    fill_in 'Buscar', with: 'NATAL10-0001'
-    click_on 'Buscar cupom'
+    visit root_path
+    fill_in :query, with: 'NATAL10-0001'
+    click_on 'Buscar'
 
     expect(page).to have_content(coupon.title)
   end
@@ -33,7 +33,7 @@ feature 'Admin searches a coupon' do
 
     login_as user, scope: :user
     visit promotions_path
-    fill_in 'Buscar', with: 'NATAL10-0001'
+    fill_in :query, with: 'NATAL10-0001'
     click_on 'Buscar cupom'
 
     expect(page).to have_content("Cupom não encontrado")

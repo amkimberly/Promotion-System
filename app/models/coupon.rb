@@ -19,6 +19,11 @@ class Coupon < ApplicationRecord
     save!(context: :coupon_inactivate)
   end
 
+  def self.search(search)
+    where("lower(promotion.name) LIKE: search or lower(coupons.code) LIKE: search", 
+          search: "%#{search.downcase}%").uniq
+  end
+
   private
 
   def discount_rate
