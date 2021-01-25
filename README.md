@@ -1,24 +1,20 @@
-# README
+# Promotion System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Promotion System allows you to manage promotions and coupons for any products of your store.
 
-Things you may want to cover:
+## Functionalities
 
-* Ruby version
+- Create promotions, add the eligible product categories and distribute coupons' discount to your costumers.
+- Inactivate, cancel or reactivate existing coupons whenever you want.
 
-* System dependencies
+## Installation
 
-* Configuration
+- the first step is to clone the repository [here](https://qsd.campuscode.com.br/AmKimberly/promotion-system.git) and paste it on your terminal.
+- Then, in your project folder, run:
 
-* Database creation
+```bin/setup```
 
-* Database initialization
+``` rails s ```
 
-* How to run the test suite
+and enjoy your system :)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
