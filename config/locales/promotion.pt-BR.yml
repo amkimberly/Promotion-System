@@ -7,7 +7,7 @@ pt-BR:
         other: 'Promoções'
     attributes:
       promotion:
-        name: 'Nome'
+        name: 'Título'
         description: 'Descrição'
         code: 'Código'
         product_category_ids: 'Categoria de produtos'

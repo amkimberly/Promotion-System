@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+  <div class= "alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <h2><%= @promotion.name%></h2> 
 <strong>Descrição: </strong>
 <%= @promotion.description %>

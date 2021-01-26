@@ -7,6 +7,7 @@ class Promotion < ApplicationRecord
             :coupon_quantity, :expiration_date,
             presence: { message: 'não pode ficar em branco' }
   validates :code, uniqueness: { message: 'deve ser único' }
+  validates :product_category_ids, presence: { message: 'precisa ser selecionada'}
 
   #TODO: Gerar cupons faltantes. Admin alterou promotion e aumentou numero de cupons.
   # Deve gerar cupons restantes.

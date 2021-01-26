@@ -1,5 +1,14 @@
+<% if flash[:notice] %>
+  <div class= "alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <% if user_signed_in? %>
-  <%= link_to "Promoções", promotions_path %>
-  <%= link_to "Categorias de produto", product_categories_path %>
+  <div class="d-grid gap-3">
+    <div class="p-2 bg-light border"><%= link_to "Promoções", promotions_path %></div>
+    <div class="p-2 bg-light border"><%= link_to "Categorias de produto", 
+                                         product_categories_path %></div>
+</div>
 <% end %>
 

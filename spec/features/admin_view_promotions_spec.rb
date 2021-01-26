@@ -2,13 +2,14 @@ require 'rails_helper'
 
 feature 'Admin view promotions' do
   scenario 'successfully' do
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
     Promotion.create!(name: 'Cyber Monday', coupon_quantity: 100,
                       description: 'Promoção de Cyber Monday',
                       code: 'CYBER15', discount_rate: 15,
-                      expiration_date: '22/12/2033')
+                      product_category_ids: 1, expiration_date: '22/12/2033')
 
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
@@ -25,13 +26,14 @@ feature 'Admin view promotions' do
   end
 
   scenario 'and view details' do
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
     Promotion.create!(name: 'Cyber Monday', coupon_quantity: 90,
                       description: 'Promoção de Cyber Monday',
                       code: 'CYBER15', discount_rate: 15,
-                      expiration_date: '22/12/2033')
+                      product_category_ids: 1, expiration_date: '22/12/2033')
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
     login_as user, scope: :user
@@ -57,9 +59,10 @@ feature 'Admin view promotions' do
   end
 
   scenario 'and return to home page' do
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
     login_as user, scope: :user
@@ -71,9 +74,10 @@ feature 'Admin view promotions' do
   end
 
   scenario 'and return to promotions page' do
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
     login_as user, scope: :user

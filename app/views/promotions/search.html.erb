@@ -5,17 +5,13 @@
         <td><%= link_to promotion.name, promotion %></td>
         <td><%= promotion.description %></td>
     <% end %>
-<% else %>
-    <h3>Nenhuma promoção encontrada</h3>
-<% end %>
-
-<% if @coupons %>
+<% elsif  @coupons.present? %>
     <% @coupons.each do |coupon| %>
         <h3><%= "Resultados encontrados" %></h3>
         <%= link_to coupon.title, coupon.promotion %>
     <% end %>
-<% else %> 
-        <h3> Não foram encontrados resultados deste cupom </h3>
+<% else %>
+    <h3>Nenhum resultado encontrado</h3>
 <% end %>
 <br><br>
 <%= link_to t('promotion.link.back'), promotions_path, class: "btn btn-primary"%>

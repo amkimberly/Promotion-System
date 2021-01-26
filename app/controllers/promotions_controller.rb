@@ -17,7 +17,7 @@ class PromotionsController < ApplicationController
   end
 
   def create
-    @promotion = Promotion.create(promotion_params)
+    @promotion = Promotion.new(promotion_params)
     if @promotion.save
       flash[:notice] = t('promotion.flash.create')
       redirect_to @promotion
@@ -44,7 +44,7 @@ class PromotionsController < ApplicationController
       flash[:notice] = t('promotion.flash.update')
       redirect_to @promotion
     else
-      render_ :edit
+      render :edit
     end
   end
 

@@ -1,12 +1,13 @@
 require 'rails_helper'
+require 'bigdecimal'
 
 feature 'Admin edits a promotion' do
   scenario 'from promotions page' do
-
     #ARRANGE
-    Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
+      Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
+                        code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                        product_category_ids: 1, expiration_date: '22/12/2033')
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
     #ACT
@@ -22,9 +23,10 @@ feature 'Admin edits a promotion' do
   scenario 'and enters edit page' do
 
     #ARRANGE
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+                        code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                        product_category_ids: 1, expiration_date: '22/12/2033')
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
 
 
@@ -37,7 +39,7 @@ feature 'Admin edits a promotion' do
 
     #ASSERT
     expect(current_path).to eq(edit_promotion_path(Promotion.last))
-    expect(page).to have_field('Nome', with: 'Natal')
+    expect(page).to have_field('Título', with: 'Natal')
     expect(page).to have_field('Descrição', with: 'Promoção de Natal')
     expect(page).to have_field('Código', with: 'NATAL10')
     expect(page).to have_field('Desconto', with: '10.0')
@@ -45,13 +47,12 @@ feature 'Admin edits a promotion' do
     expect(page).to have_field('Data de término', with: '2033-12-22')
 end
   scenario "and updates promotion's informations" do
-
     #ARRANGE
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                      expiration_date: '22/12/2033')
+                        code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                        product_category_ids: 1, expiration_date: '22/12/2033')
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
-
 
     #ACT
     login_as user, scope: :user
@@ -59,7 +60,7 @@ end
     click_on "Natal"
     click_on "Editar"
 
-    fill_in 'Nome', with: 'Cyber Monday'
+    fill_in 'Título', with: 'Cyber Monday'
     fill_in 'Descrição', with: 'Promoção de Cyber Monday'
     fill_in 'Código', with: 'CYBER15'
     fill_in 'Desconto', with: '15'

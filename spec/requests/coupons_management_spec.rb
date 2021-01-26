@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'coupon management' do
   context 'show' do
     it 'render coupon json with discount' do
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
       promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                                    code: 'NATAL10', discount_rate: 10, 
-                                    coupon_quantity: 100,
-                                    expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
       coupon = Coupon.create!(promotion: promotion, code: 'NATAL10-0001')
 
       get "/api/v1/coupons/#{coupon.code}"
@@ -28,10 +28,10 @@ describe 'coupon management' do
   end
   context 'inactivate' do
     it 'change coupon status' do
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
       promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                                    code: 'NATAL10', discount_rate: 10, 
-                                    coupon_quantity: 100,
-                                    expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
       coupon = Coupon.create!(promotion: promotion, code: 'NATAL10-0001')
 
       post "/api/v1/coupons/#{coupon.code}/inactivate", params: {order: {code: 'ORDER123'}}
@@ -47,10 +47,10 @@ describe 'coupon management' do
     end
 
     it 'order must exist' do
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
       promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                                    code: 'NATAL10', discount_rate: 10, 
-                                    coupon_quantity: 100,
-                                    expiration_date: '22/12/2033')
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
       coupon = Coupon.create!(promotion: promotion, code: 'NATAL10-0001')
 
       post "/api/v1/coupons/#{coupon.code}/inactivate", params: {order: {code: ''}}
@@ -59,10 +59,10 @@ describe 'coupon management' do
     end
 
     it 'order must exist' do
-      promotion = Promotion.create!(name: 'Cyber Monday', coupon_quantity: 100,
-                                  description: 'Promoção de Cyber Monday',
-                                  code: 'CYBER15', discount_rate: 15,
-                                  expiration_date: '22/12/2033')
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
+      promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
+                    code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
+                    product_category_ids: 1, expiration_date: '22/12/2033')
       coupon = Coupon.create!(promotion: promotion, code: 'CYBER15-0001')
 
       post "/api/v1/coupons/#{coupon.code}/inactivate", params: {}

@@ -3,9 +3,10 @@ require 'rails_helper'
 feature 'Admin cancels coupon' do
   scenario 'successfully' do
     user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
-    promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                                 code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                                 expiration_date: '22/12/2033')
+    ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
+    promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
+                                  code: 'PASCOA21', discount_rate: 10, 
+                                  product_category_ids:1, expiration_date: 1.day.from_now)
     coupon = Coupon.create!(promotion: promotion, code: 'NATAL10-0001')
 
       login_as user, scope: :user

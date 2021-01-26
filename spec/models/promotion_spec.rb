@@ -15,12 +15,15 @@ describe Promotion do
                                                             ' branco')
       expect(promotion.errors[:expiration_date]).to include('não pode ficar em'\
                                                             ' branco')
+      expect(promotion.errors[:product_category_ids]).to include('precisa ser'\
+                                                            ' selecionada')
     end
 
     it 'code must be unique' do
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
       Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                        code: 'NATAL10', discount_rate: 10,
-                        coupon_quantity: 100, expiration_date: '22/12/2033')
+                        code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                        product_category_ids: 1, expiration_date: '22/12/2033')
       promotion = Promotion.new(code: 'NATAL10')
 
       promotion.valid?
@@ -28,12 +31,13 @@ describe Promotion do
       expect(promotion.errors[:code]).to include('deve ser único')
     end
   end
-  context '#generate_coupons!' do
+  context 'generate_coupons!' do
     it 'of a promotion with no coupons' do
-    promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
+      promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
                                   code: 'PASCOA21', discount_rate: 10, 
-                                  expiration_date: 1.day.from_now)
-    promotion.generate_coupons!
+                                  product_category_ids:1, expiration_date: 1.day.from_now)
+      promotion.generate_coupons!
 
     expect(promotion.coupons.count).to eq(5)
     expect(promotion.coupons.map(&:code)).to contain_exactly('PASCOA21-0001',
@@ -43,9 +47,10 @@ describe Promotion do
                                                      'PASCOA21-0005')
     end
     it 'and coupons are already generated' do
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
       promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
-                                    code: 'PASCOA21', discount_rate: 10, 
-                                    expiration_date: 1.day.from_now)
+                                  code: 'PASCOA21', discount_rate: 10, 
+                                  product_category_ids:1, expiration_date: 1.day.from_now)
 
       promotion.generate_coupons!
 

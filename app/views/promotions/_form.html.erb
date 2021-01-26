@@ -2,49 +2,32 @@
   <ul>
     <% @promotion.errors.full_messages.each do |message| %>
       <div class="alert alert-danger" role="alert"> 
-      <li><%= message%></li>
+      <div class="invalid-feedback"></div>
+        <%= message %>
+      </div>
   </ul>
     <% end %>
 <% end %>
 
 <%= form_with model: @promotion, local: true do |f| %>
-  <div class="form-group">
+  <div class="col-md-5">
     <%= f.label :name %>
-    <%= f.text_field :name%>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :code%>
-    <%= f.text_field :code %>
-  </div>
-
-  <div class="form-group">
+    <%= f.text_field :name, class: "form-control", placeholder: "Insira o título" %><br>
     <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control", rows:3 %>
+    <%= f.text_area :description, class: "form-control", rows:3, 
+                                  placeholder: "Insira detalhes da promoção" %><br><br>
+    <%= f.label :product_category_ids %>
+    <p><%= f.collection_check_boxes :product_category_ids, ProductCategory.all, :id, :name %></p>
+    <br>
+      <%= f.label :expiration_date %><br>
+      <%= f.date_field :expiration_date, class: "form-control" %>
+      <%= f.label :code %>
+      <%= f.text_field :code, class: "form-control", placeholder: "Insira o código" %><br>
+      <%= f.label :coupon_quantity %>
+      <%= f.number_field :coupon_quantity, class: "form-control" %><br>
+      <%= f.label :discount_rate %>
+      <%= f.number_field :discount_rate, class: "from-control" %><br><br>
+      <%= f.submit action_text, class: "btn btn-success" %>
+      <%= link_to t('promotion.link.back'), promotions_path, class: "btn btn-primary"%>
   </div>
-
-  <div class="form-group">
-    <%= f.label :discount_rate %>
-    <%= f.number_field :discount_rate %>
-  </div
-
-  <div class="form-group">
-    <%= f.label :coupon_quantity %>
-    <%= f.number_field :coupon_quantity %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :expiration_date %><br>
-    <%= f.date_field :expiration_date %>
-    <br><br>
-  </div>
-
-  <div class="form-group">
-  <%= f.label :product_category_ids %><br>
-  <p><%= f.collection_check_boxes :product_category_ids, ProductCategory.all, :id, :name %></p>
-  </div>
-
-  <%= f.submit action_text, class: "btn btn-success" %>
-  </div>
-
 <% end %>

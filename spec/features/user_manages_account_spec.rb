@@ -20,7 +20,7 @@ feature 'User' do
       expect(page).to have_content('Login efetuado com sucesso!')
       expect(page).to have_content('piupiu@locaweb.com.br')
       expect(page).to_not have_link('Login')
-      expect(page).to have_link('Sair')
+      expect(page).to have_link('sair')
       expect(page).to_not have_link('Registrar conta')
     end
   end
@@ -34,7 +34,7 @@ feature 'User' do
       fill_in 'Email', with: 'piupiu@locaweb.com.br'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
-      click_on 'Sair'
+      click_on 'sair'
 
       expect(current_path).to eq(root_path)
       expect(page).to have_content('Logout efetuado com sucesso!')
