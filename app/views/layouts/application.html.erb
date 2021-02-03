@@ -11,6 +11,8 @@
     rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
     crossorigin="anonymous">
 
+    <link rel="stylesheet" href="../../assets/stylesheets/style.css"
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" 
     integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" 
     crossorigin="anonymous"></script>
@@ -44,7 +46,7 @@
           <li><a class="dropdown-item" href="/users/edit">Minha conta</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" <%=link_to "sair", destroy_user_session_path, method: :delete%></a></li>
+          <li><a class="dropdown-item" <%= link_to "sair", destroy_user_session_path, method: :delete%></a></li>
         </ul>
           </div>
       </div>
