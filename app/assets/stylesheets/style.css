@@ -23,13 +23,12 @@
 .corners {
   border-radius: 15px;
   width: 350px;
-  height: 400px;
+  height: 420px;
   padding: 20px;
  }
 
 .signup-border {
-  display: inline-block;
-  width: 400px;
+  width: 360px;
   height: 450px;
   background-color: indigo;
 }

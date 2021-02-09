@@ -8,10 +8,9 @@ feature 'User' do
 
   context 'Log in' do
     let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
-    
+
     scenario 'and receives welcome message' do
 
-      click_on 'Login'
       fill_in 'Email', with: 'piupiu@locaweb.com.br'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
@@ -28,18 +27,18 @@ feature 'User' do
   context 'Log out' do
     let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
 
-    scenario 'and goes to home page' do
+    scenario 'and goes to login page' do
 
-      click_on 'Login'
+      visit new_user_session_path
       fill_in 'Email', with: 'piupiu@locaweb.com.br'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
       click_on 'sair'
 
-      expect(current_path).to eq(root_path)
-      expect(page).to have_content('Logout efetuado com sucesso!')
+      expect(page).to have_current_path(new_user_session_path)
+      expect(page).to have_content('Para continuar, efetue login ou registre-se.')
       expect(page).to_not have_content('piupiu@locaweb.com.br')
-      expect(page).to have_link('Login')
+      expect(page).to have_button('Entrar')
       expect(page).to_not have_link('Sair')
     end
   end
@@ -100,8 +99,7 @@ feature 'User' do
       click_on "Minha conta"
       click_on "Excluir minha conta"
 
-      expect(current_path).to eq(root_path)
-      expect(page).to have_content("Sua conta foi excluída com sucesso. Esperamos vê-lo novamente em breve.")
+      expect(page).to have_content('Para continuar, efetue login ou registre-se.')
       expect(page).to_not have_link("Excluir minha conta")
     end
 

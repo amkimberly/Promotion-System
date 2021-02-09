@@ -24,11 +24,5 @@
         <% end %>
       </form>
     </div>
-
-  <% elsif controller_name != 'sessions' && controller_name != 'registrations' %>
-    <div class="container justify-content-end">
-      <a class="btn btn-outline-success text-white" <%= link_to 'Login', new_user_session_path, class: "btn btn-outline-succeded" %></a>
-      <a class="btn btn-outline-primary text-white" <%= link_to "Registrar conta", new_user_registration_path, class: "btn btn-outline-secondary" %></a>
-    </div>
   <% end %>
 </header>
