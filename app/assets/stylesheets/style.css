@@ -1,3 +1,84 @@
-navinha {
+.btnbtn-primary {
+  width: 50%;
+}
+
+.bg-purple {
   background-color: indigo;
+}
+
+.mf {
+  width: 120px;
+  font-size: 50px;
+  font-family: Arial;
+}
+
+.border {
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  background-color: indigo;
+}
+
+
+.corners {
+  border-radius: 15px;
+  width: 350px;
+  height: 400px;
+  padding: 20px;
+ }
+
+.signup-border {
+  display: inline-block;
+  width: 400px;
+  height: 450px;
+  background-color: indigo;
+}
+
+ /* Buttons customization */
+
+ .btn-outline-secondary {
+  background-color: indigo;
+  color: white;
+  border-color: #0b69c2;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #0b69c2;
+  color: white;
+  border-color: #0b69c2;
+}
+
+.btn-outline-succeded{
+  background-color: indigo;
+  color: white;
+  border-color: #248d20;
+}
+
+.btn-outline-succeded:hover {
+  background-color: #248d20;
+  color: white;
+  border-color: #248d20;
+}
+
+.btn-primary{
+  background-color: #0b69c2;
+  color: white;
+  border-color: #0b69c2;
+}
+
+.btn-succeded{
+  background-color: #248d20;
+  color: white;
+  border-color: #248d20;
+}
+
+.btn-search{
+  background-color: indigo;
+  color: white;
+}
+
+.btn-search:hover {
+  background-color: #0b69c2;
+  color: white;
+  border-color: #0b69c2;
 }

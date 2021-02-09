@@ -141,8 +141,8 @@ pt-BR:
     template:
       body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
-        one: 'Não foi possível gravar %{model}: 1 erro'
-        other: 'Não foi possível gravar %{model}: %{count} erros'
+        one: 'Não foi possível gravar: 1 erro'
+        other: 'Não foi possível gravar: %{count} erros'
   helpers:
     select:
       prompt: Por favor selecione

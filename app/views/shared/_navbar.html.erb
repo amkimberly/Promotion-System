@@ -1,0 +1,34 @@
+<header class="navbar sticky-top flex-md-nowrap p-2 shadow bg-purple">
+  <a class="navbar-brand col-sm px-4 text-white" href="http://localhost:3000">Coolpon</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container-fluid justify-content-start">
+    <a class="nav-link active text-white" href="http://localhost:3000/">Início</a>
+    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="/users/edit">Minha conta</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" <%= link_to "sair", destroy_user_session_path, method: :delete %></a></li>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class= "container-fluid justify-content-end">
+      <span class="navbar-text text-white"><%= current_user.email %></span>
+
+      <form class="form-inline" action="/promotions/search">
+        <%= form_with url: "/promotions/search", method: :get do |form| %>
+          <%= form.text_field :query, class: "form-control me-2", placeholder: "Pesquisar" %>
+          <%= form.submit "Buscar", class: "btn btn-search" %>
+        <% end %>
+      </form>
+    </div>
+
+  <% elsif controller_name != 'sessions' && controller_name != 'registrations' %>
+    <div class="container justify-content-end">
+      <a class="btn btn-outline-success text-white" <%= link_to 'Login', new_user_session_path, class: "btn btn-outline-succeded" %></a>
+      <a class="btn btn-outline-primary text-white" <%= link_to "Registrar conta", new_user_registration_path, class: "btn btn-outline-secondary" %></a>
+    </div>
+  <% end %>
+</header>

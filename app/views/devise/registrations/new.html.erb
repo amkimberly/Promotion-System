@@ -1,31 +1,36 @@
-<h2>Sign up</h2>
+<div class= "d-flex justify-content-center">
+  <div class="container signup-border corners">
+    <div class="mx-auto" style="width:200px">
+      <div class= "mx-1 mf text-white">Registro</div><br>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="form-label text-white">
+            <%= f.label :email %></div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <br>
+          <div class="form-label text-white">
+            <%= f.label :password, 'Senha' %>
+            <% if @minimum_password_length %>
+            <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
+            <% end %>
+          </div>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            <br>
+          <div class="form-label text-white">
+            <%= f.label :password_confirmation, 'Confirmação senha' %></div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            <br>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="row">
+            <div class="col mx-5">
+              <%= f.submit "Registrar", class: "btn btn-outline-succeded" %>
+              <%= link_to "Voltar", root_path, class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password, 'Senha' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirmação senha' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Registrar", class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<%= link_to "Voltar", root_path, class: "btn btn-primary" %>
+</div>
 
 

@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><PromotionSystem</title>
+    <title>Coolpon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('COOLPON.png') %>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
     crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../assets/stylesheets/style.css"
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" 
     integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" 
@@ -24,48 +27,16 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navinha">
-    <a class="navbar-brand" href="http://localhost:3000/">Coolpon</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class= "container-fluid justify-content-start"
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Início<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#">Quem somos</a>
-          <a class="nav-item nav-link" href="#">Contato</a>
-        </div>
-      <% if user_signed_in? %>
-      <ul class="navbar-nav">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-        role="button" data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="/users/edit">Minha conta</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" <%=link_to "sair", destroy_user_session_path, method: :delete%></a></li>
-        </ul>
-          </div>
-      </div>
-    </div>
-      <div class= "container-fluid justify-content-end">
-        <span class="navbar-text"><%= current_user.email %></span>
-        <form class="form-inline" action="/promotions/search">
-        <%= form_with url: "/promotions/search", method: :get do |form| %>
-          <%= form.text_field :query, class: "form-control me-2", placeholder: "Pesquisar" %>
-          <%= form.submit "Buscar", class: "btn btn-outline-primary" %>
-        <% end %>
-        </form>
-        <% elsif controller_name != 'sessions' && controller_name != 'registrations' %>
-          <a class= "nav-item nav-link" <%= link_to 'Login', new_user_session_path, class: "btn btn-success" %></a>
-          <a class= "nav-item nav-link" <%= link_to "Registrar conta", new_user_registration_path,  class: "btn btn-primary" %></a>
-        <% end %>
-      </div>
-  </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+    <%= render "shared/navbar" %>
 
-    <%= yield %>
+    <% if flash[:notice] %>
+        <div class= "alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <p class="alert"><%= alert %></p>
+
+      <%= render "shared/sidebar" %>
+      <%= yield %>
   </body>
 </html>
