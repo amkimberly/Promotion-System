@@ -1,13 +1,12 @@
 require 'rails_helper'
 
-feature 'Admin registers a valid product category' do 
-  let!(:user) {User.create!(email: 'piupiu@locaweb.com.br', password: '123456')}
-
-  before(:each) do
-    login_as user, scope: :user
+describe 'Admin registers a valid product category' do
+  before do
+    user = create(:user, email: 'piupiu@locaweb.com.br', password: '123456')
+    login_as user
   end
 
-  scenario 'and attributes cannot be blank' do
+  it 'and attributes cannot be blank' do
     ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')
 
     visit root_path
@@ -18,7 +17,7 @@ feature 'Admin registers a valid product category' do
     expect(page).to have_content('não pode ficar em branco', count: 2)
   end
 
-  scenario 'and code must be unique' do
+  it 'and code must be unique' do
     ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')
 
     visit root_path
@@ -29,6 +28,4 @@ feature 'Admin registers a valid product category' do
 
     expect(page).to have_content('deve ser único')
   end
-end 
-
- 
+end

@@ -11,8 +11,8 @@ class PromotionsController < ApplicationController
 
   def search
     @query = params[:query]
-    @promotions = Promotion.where("name LIKE ?", "%#{@query}%")
-    @coupons = Coupon.where("code LIKE ?", "%#{@query}%")
+    @promotions = Promotion.where('name LIKE ?', "%#{@query}%")
+    @coupons = Coupon.where('code LIKE ?', "%#{@query}%")
   end
 
   def create
@@ -31,8 +31,7 @@ class PromotionsController < ApplicationController
     flash[:notice] = t('promotion.flash.generate_coupons')
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     render :edit
@@ -47,21 +46,20 @@ class PromotionsController < ApplicationController
     end
   end
 
-    def destroy
-      @promotion.destroy
-      flash[:notice] = t('promotion.flash.delete')
-      redirect_to promotions_path
-    end
-
+  def destroy
+    @promotion.destroy
+    flash[:notice] = t('promotion.flash.delete')
+    redirect_to promotions_path
+  end
 
   private
 
   def promotion_params
     params
-    .require(:promotion)
-    .permit(:name, :description, :code, :discount_rate,
-            :coupon_quantity, :expiration_date,
-            product_category_ids: [])
+      .require(:promotion)
+      .permit(:name, :description, :code, :discount_rate,
+              :coupon_quantity, :expiration_date,
+              product_category_ids: [])
   end
 
   def set_promotion

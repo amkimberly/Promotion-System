@@ -8,9 +8,10 @@ class User < ApplicationRecord
 
 
   private
+
   def email_locaweb
     return if email.include? '@locaweb.com.br'
 
-    errors.add(:email, "precisa ser '@locaweb.com.br'" )
+    errors.add(:email, 'precisa ser @locaweb.com.br')
   end
 end

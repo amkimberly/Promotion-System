@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Promotion do
-  context 'validation' do
+  context 'when validates' do
     it 'attributes cannot be blank' do
-      promotion = Promotion.new
+      promotion = described_class.new
 
       promotion.valid?
 
@@ -21,46 +21,48 @@ describe Promotion do
 
     it 'code must be unique' do
       ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
-      Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
-                        code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
-                        product_category_ids: 1, expiration_date: '22/12/2033')
-      promotion = Promotion.new(code: 'NATAL10')
+      described_class.create!(name: 'Natal', description: 'Promoção de Natal',
+                              code: 'NATAL10', discount_rate: 10, coupon_quantity: 100,
+                              product_category_ids: 1, expiration_date: '22/12/2033')
+      promotion = described_class.new(code: 'NATAL10')
 
       promotion.valid?
 
       expect(promotion.errors[:code]).to include('deve ser único')
     end
   end
-  context 'generate_coupons!' do
+
+  context 'when generate_coupons!' do
     it 'of a promotion with no coupons' do
       ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
-      promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
-                                  code: 'PASCOA21', discount_rate: 10, 
-                                  product_category_ids:1, expiration_date: 1.day.from_now)
+      promotion = described_class.create!(name: 'Páscoa', coupon_quantity: 5,
+                                          code: 'PASCOA21', discount_rate: 10,
+                                          product_category_ids: 1, expiration_date: 1.day.from_now)
       promotion.generate_coupons!
 
-    expect(promotion.coupons.count).to eq(5)
-    expect(promotion.coupons.map(&:code)).to contain_exactly('PASCOA21-0001',
-                                                     'PASCOA21-0002',
-                                                     'PASCOA21-0003',
-                                                     'PASCOA21-0004',
-                                                     'PASCOA21-0005')
-    end
-    it 'and coupons are already generated' do
-      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
-      promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5, 
-                                  code: 'PASCOA21', discount_rate: 10, 
-                                  product_category_ids:1, expiration_date: 1.day.from_now)
-
-      promotion.generate_coupons!
-
-      expect {promotion.generate_coupons!}.to raise_error('Cupons já foram gerados')
       expect(promotion.coupons.count).to eq(5)
       expect(promotion.coupons.map(&:code)).to contain_exactly('PASCOA21-0001',
-                                                       'PASCOA21-0002',
-                                                       'PASCOA21-0003',
-                                                       'PASCOA21-0004',
-                                                       'PASCOA21-0005')
+                                                               'PASCOA21-0002',
+                                                               'PASCOA21-0003',
+                                                               'PASCOA21-0004',
+                                                               'PASCOA21-0005')
+    end
+
+    it 'and coupons are already generated' do
+      ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
+      promotion = described_class.create!(name: 'Páscoa', coupon_quantity: 5,
+                                          code: 'PASCOA21', discount_rate: 10,
+                                          product_category_ids: 1, expiration_date: 1.day.from_now)
+
+      promotion.generate_coupons!
+
+      expect { promotion.generate_coupons! }.to raise_error('Cupons já foram gerados')
+      expect(promotion.coupons.count).to eq(5)
+      expect(promotion.coupons.map(&:code)).to contain_exactly('PASCOA21-0001',
+                                                               'PASCOA21-0002',
+                                                               'PASCOA21-0003',
+                                                               'PASCOA21-0004',
+                                                               'PASCOA21-0005')
     end
   end
 end

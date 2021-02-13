@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Visitor visit home page' do
-  xscenario 'successfully' do
+describe 'Visitor visit home page' do
+  xit 'successfully' do
     visit root_path
 
     expect(page).to have_content('Login')

@@ -1,7 +1,7 @@
 describe User do
-  context 'validation' do
+  context 'when validates' do
     it 'attributes cannot be blank' do
-      user = User.new
+      user = described_class.new
 
       user.valid?
 
@@ -10,11 +10,11 @@ describe User do
     end
 
     it 'attributes login with specific email adress only' do
-      user = User.new
+      user = described_class.new
 
       user.valid?
 
-      expect(user.errors[:email]).to include("precisa ser '@locaweb.com.br'")
+      expect(user.errors[:email]).to include('precisa ser @locaweb.com.br')
     end
   end
 end

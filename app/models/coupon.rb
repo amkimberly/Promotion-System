@@ -1,16 +1,16 @@
 class Coupon < ApplicationRecord
   belongs_to :promotion
 
-  enum status: {active: 0, cancel: 10, inactive:20}
+  enum status: { active: 0, cancel: 10, inactive: 20 }
   validates :order, presence: true, on: :coupon_inactivate
 
   def title
-  "#{code} (#{Coupon.human_attribute_name("status.#{status}")})"
+    "#{code} (#{Coupon.human_attribute_name("status.#{status}")})"
   end
 
   def as_json(options = {})
-    super({methods: %i[discount_rate expiration_date],
-          only: %i[]}.merge(options))
+    super({ methods: %i[discount_rate expiration_date],
+            only: %i[] }.merge(options))
   end
 
   def inactivate!(order)
@@ -20,7 +20,7 @@ class Coupon < ApplicationRecord
   end
 
   def self.search(search)
-    where("lower(promotion.name) LIKE: search or lower(coupons.code) LIKE: search", 
+    where('lower(promotion.name) LIKE: search or lower(coupons.code) LIKE: search',
           search: "%#{search.downcase}%").uniq
   end
 
