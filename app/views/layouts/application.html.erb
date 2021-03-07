@@ -33,9 +33,10 @@
         <div class= "alert alert-success">
           <%= flash[:notice] %>
         </div>
-      <% end %>
-      <p class="alert"><%= alert %></p>
-
+    <% elsif %>
+      <div class= "alert alert-danger">
+        <p class="alert"><%= alert %></p></div>
+    <% end %>
       <%= render "shared/sidebar" %>
       <%= yield %>
   </body>

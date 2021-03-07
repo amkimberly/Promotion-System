@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin cancels coupon' do
   it 'successfully' do
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
     ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     promotion = Promotion.create!(name: 'Páscoa', coupon_quantity: 5,
                                   code: 'PASCOA21', discount_rate: 10,

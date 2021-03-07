@@ -287,6 +287,7 @@
       "/home/amkimberly/loca-training/promotion-system/app/controllers/users/registrations_controller.rb": {
         "lines": [
           null,
+          null,
           1,
           1,
           null,
@@ -421,6 +422,6 @@
         }
       }
     },
-    "timestamp": 1613256486
+    "timestamp": 1614983061
   }
 }

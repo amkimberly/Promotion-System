@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin searches a coupon' do
   it 'from index page' do
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
 
     login_as user, scope: :user
     visit root_path
@@ -11,7 +11,7 @@ describe 'Admin searches a coupon' do
   end
 
   it 'successfully' do
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
     ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     promotion = Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                                   code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,
@@ -27,7 +27,7 @@ describe 'Admin searches a coupon' do
   end
 
   it 'and coupon is not found' do
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
     ProductCategory.create!(name: 'Hospedagem', code: 'HOSP')
     Promotion.create!(name: 'Natal', description: 'Promoção de Natal',
                       code: 'NATAL10', discount_rate: 10, coupon_quantity: 5,

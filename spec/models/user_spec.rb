@@ -14,7 +14,7 @@ describe User do
 
       user.valid?
 
-      expect(user.errors[:email]).to include('precisa ser @locaweb.com.br')
+      expect(user.errors[:email]).to include('precisa ser @mail.com')
     end
   end
 end

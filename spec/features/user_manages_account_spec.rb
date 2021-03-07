@@ -7,15 +7,15 @@ describe 'User' do
 
   context 'when Log in' do
     it 'and receives welcome message' do
-      create(:user, email: 'piupiu@locaweb.com.br', password: '123456')
+      create(:user, email: 'piupiu@mail.com', password: '123456')
 
-      fill_in 'Email', with: 'piupiu@locaweb.com.br'
+      fill_in 'Email', with: 'piupiu@mail.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
 
       expect(page).to have_current_path(root_path)
       expect(page).to have_content('Login efetuado com sucesso!')
-      expect(page).to have_content('piupiu@locaweb.com.br')
+      expect(page).to have_content('piupiu@mail.com')
       expect(page).not_to have_link('Login')
       expect(page).to have_link('sair')
       expect(page).not_to have_link('Registrar conta')
@@ -24,17 +24,17 @@ describe 'User' do
 
   context 'when Log out' do
     it 'and goes to login page' do
-      create(:user, email: 'piupiu@locaweb.com.br', password: '123456')
+      create(:user, email: 'piupiu@mail.com', password: '123456')
 
       visit new_user_session_path
-      fill_in 'Email', with: 'piupiu@locaweb.com.br'
+      fill_in 'Email', with: 'piupiu@mail.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
       click_on 'sair'
 
       expect(page).to have_current_path(new_user_session_path)
       expect(page).to have_content('Para continuar, efetue login ou registre-se.')
-      expect(page).not_to have_content('piupiu@locaweb.com.br')
+      expect(page).not_to have_content('piupiu@mail.com')
       expect(page).to have_button('Entrar')
       expect(page).not_to have_link('Sair')
     end
@@ -43,7 +43,7 @@ describe 'User' do
   context 'when Creates new account' do
     it 'successfully' do
       visit new_user_registration_path
-      fill_in 'Email', with: 'piupiu@locaweb.com.br'
+      fill_in 'Email', with: 'piupiu@mail.com'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirmação senha', with: '123456'
       click_on 'Registrar'
@@ -72,16 +72,16 @@ describe 'User' do
       click_on 'Registrar'
 
       expect(page).to have_current_path(user_registration_path)
-      expect(page).to have_content('precisa ser @locaweb.com.br')
+      expect(page).to have_content('precisa ser @mail.com')
     end
   end
 
   context 'when Deletes account' do
     it 'and goes through profile page' do
-      create(:user, email: 'piupiu@locaweb.com.br', password: '123456')
+      create(:user, email: 'piupiu@mail.com', password: '123456')
 
       visit new_user_session_path
-      fill_in 'Email', with: 'piupiu@locaweb.com.br'
+      fill_in 'Email', with: 'piupiu@mail.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
       visit root_path
@@ -90,7 +90,7 @@ describe 'User' do
     end
 
     it 'successfully' do
-      user = create(:user, email: 'piupiu@locaweb.com.br', password: '123456')
+      user = create(:user, email: 'piupiu@mail.com', password: '123456')
 
       login_as user
       visit root_path

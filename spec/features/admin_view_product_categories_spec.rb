@@ -4,7 +4,7 @@ describe 'Admin view product categories' do
   it 'successfully' do
     ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')
     ProductCategory.create!(name: 'Hospedagem Brasil', code: 'HOSPBR')
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
 
     login_as user, scope: :user
     visit root_path
@@ -15,7 +15,7 @@ describe 'Admin view product categories' do
   end
 
   it 'and show empty message' do
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
 
     login_as user, scope: :user
     visit root_path
@@ -27,7 +27,7 @@ describe 'Admin view product categories' do
   it 'and view details' do
     ProductCategory.create!(name: 'Passagens Aéreas', code: 'PAX')
     ProductCategory.create!(name: 'Hospedagem Brasil', code: 'HOSPBR')
-    user = User.create!(email: 'piupiu@locaweb.com.br', password: '123456')
+    user = User.create!(email: 'piupiu@mail.com', password: '123456')
 
     login_as user, scope: :user
     visit root_path

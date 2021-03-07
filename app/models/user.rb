@@ -4,14 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validate :email_locaweb
+  validate :mail
 
 
   private
 
-  def email_locaweb
-    return if email.include? '@locaweb.com.br'
+  def mail
+    return if email.include? '@mail.com'
 
-    errors.add(:email, 'precisa ser @locaweb.com.br')
+    errors.add(:email, 'precisa ser @mail.com')
   end
 end
