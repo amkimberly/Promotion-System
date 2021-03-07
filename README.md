@@ -5,7 +5,9 @@ Promotion System allows you to manage promotions and coupons for any products of
 
 ## Dependencies
 Ruby 2.7.2
+
 Rails 6.1.0
+
 Git
 
 ## Funcionalities
@@ -26,6 +28,7 @@ if you want to skip register steps to access the system, run the command ```rake
 and use the demo account to login.
 
 login: user@mail.com
+
 password: 123456
 
 Enjoy !!!
